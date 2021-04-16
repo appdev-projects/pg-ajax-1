@@ -1,0 +1,28 @@
+<li class="list-group-item">
+  <%= form_with(model: comment) do |form| %>
+    <% if comment.errors.any? %>
+      <div id="error_explanation">
+        <ul class="list-unstyled">
+          <% comment.errors.each do |error| %>
+            <li>
+              <div class="alert alert-danger" role="alert">
+                <%= error.full_message %>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= form.hidden_field :photo_id %>
+
+    <div class="form-group">
+      <%= form.label :body, class: "sr-only" %>
+      <%= form.text_area :body, class: "form-control" %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit class: "btn btn-outline-secondary btn-block" %>
+    </div>
+  <% end %>
+</li>
