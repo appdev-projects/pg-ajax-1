@@ -1,0 +1,64 @@
+<div id="<%= dom_id(photo) %>" class="card">
+  <div class="card-body py-3 d-flex align-items-center justify-content-between">
+    <h2 class="h5 m-0 p-0 d-flex align-items-center">
+      <%= image_tag photo.owner.avatar_image, class: "rounded-circle mr-2", width: 36 %>
+
+      <%= link_to photo.owner.username, user_path(photo.owner.username), class: "text-dark" %>
+    </h2>
+
+    <div>
+      <% if current_user == photo.owner %>
+        <%= link_to edit_photo_path(photo), class: "btn btn-link btn-sm text-muted" do %>
+          <i class="fas fa-edit fa-fw"></i>
+        <% end %>
+
+      
+        <%= link_to photo, method: :delete, class: "btn btn-link btn-sm text-muted" do %>
+          <i class="fas fa-trash fa-fw"></i>
+        <% end %>
+      <% end %>
+      
+    </div>
+  </div>
+
+  <%= image_tag photo.image, class: "img-fluid" %>
+  
+  <div class="card-body">
+    <div class="mb-3 d-flex justify-content-between">
+      <div class="d-flex align-items-baseline">
+        <%= pluralize(photo.likes_count, "like") %>
+
+        <% like = current_user.likes.find_by(photo: photo) %>
+
+        <% if like %>
+          <%= link_to like, class: "btn btn-link", method: :delete do %>
+            <i class="fas fa-heart fa-fw"></i>
+
+            Un-like
+          <% end %>
+        <% else %>
+          <%= render "likes/form", like: photo.likes.build(fan: current_user) %>
+        <% end %>
+      </div>
+
+      <div>
+        <% unless policy(photo).show? %>
+          <%= render "follow_requests/follow_unfollow", recipient: photo.owner %>
+        <% end %>
+      </div>
+    </div>
+    
+
+    <p class="card-text"><%= photo.caption %></p>
+  </div>
+
+  <% if policy(photo).show? %>
+    <ul id="<%= dom_id(photo) %>_comments" class="list-group list-group-flush">
+      <% photo.comments.default_order.each do |comment| %>
+        <%= render "comments/comment", comment: comment %>
+      <% end %>
+      
+      <%= render "comments/form", comment: photo.comments.build %>
+    </ul>
+  <% end %>
+</div>

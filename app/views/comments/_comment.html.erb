@@ -1,0 +1,25 @@
+<li class="list-group-item">
+  <div class="media">
+    <%= image_tag comment.author.avatar_image, class: "rounded-circle mr-2", width: 36 %>
+    <div class="media-body">
+      <div class="d-flex align-items-center justify-content-between">
+        <h5 class="mt-0">
+          <%= link_to comment.author.username, user_path(comment.author.username), class: "text-dark" %>
+        </h5>
+
+        <div>
+          <% if current_user == comment.author %>
+            <%= link_to edit_comment_path(comment), class: "btn btn-link btn-sm text-muted" do %>
+              <i class="fas fa-edit fa-fw"></i>
+            <% end %>
+
+            <%= link_to comment, method: :delete, class: "btn btn-link btn-sm text-muted" do %>
+              <i class="fas fa-trash fa-fw"></i>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <p><%= comment.body %></p>
+    </div>
+  </div> 
+</li>
