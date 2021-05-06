@@ -5,18 +5,18 @@ class ApplicationController < ActionController::Base
   # Make sure you run `rails sample_data`
   # Delete this code when the issue is resolved.
 
-  helper_method :current_user
+  # helper_method :current_user
 
-  def current_user
-    @alice ||= User.find_by! username: "alice"
-  end
+  # def current_user
+  #   @alice ||= User.find_by! username: "alice"
+  # end
 
-  skip_forgery_protection
+  # skip_forgery_protection
   
   # End hacks.
   ##############################################################################
   
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
 
   include Pundit
   
