@@ -20,8 +20,10 @@ class CommentsController < ApplicationController
 
   # GET /comments/1/edit
   def edit
+    #@comment = Comment.where({id => params.fetch(:id)})
     respond_to do |format|
       format.html
+      format.js { render template: "comments/edit.js.erb"}
     end
   end
 
@@ -35,6 +37,7 @@ class CommentsController < ApplicationController
         format.html { redirect_back fallback_location: root_path, notice: "Comment was successfully created." }
         format.json { render :show, status: :created, location: @comment }
         format.js { render template: "comments/create.js.erb" }
+        
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
@@ -48,6 +51,7 @@ class CommentsController < ApplicationController
       if @comment.update(comment_params)
         format.html { redirect_to root_url, notice: "Comment was successfully updated." }
         format.json { render :show, status: :ok, location: @comment }
+        format.js { render template: "comments/update.js.erb"}
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
