@@ -1,4 +1,4 @@
-<li class="list-group-item">
+<li id="<%= dom_id(comment.photo) %>" class="list-group-item">
   <%= form_with(model: comment) do |form| %>
     <% if comment.errors.any? %>
       <div id="error_explanation">
