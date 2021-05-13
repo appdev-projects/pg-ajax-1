@@ -54,10 +54,9 @@
 
   <% if policy(photo).show? %>
     <ul id="<%= dom_id(photo) %>_comments" class="list-group list-group-flush">
-      <% photo.comments.default_order.each do |comment| %>
-        <%= render "comments/comment", comment: comment %>
-      <% end %>
-      
+      <%= render photo.comments.default_order %>
+
+
       <%= render "comments/form", comment: photo.comments.build %>
     </ul>
   <% end %>
