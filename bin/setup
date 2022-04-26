@@ -18,6 +18,7 @@ FileUtils.chdir APP_ROOT do
     FileUtils.cp_r("/base-rails/gems/ruby", "vendor/bundle")
     FileUtils.cp_r("/base-rails/node_modules", "node_modules")
     system! "bundle config set --local path 'vendor/bundle'"
+    system! 'bundle exec skylight disable_dev_warning'
   end
 
   system! 'bundle install'
