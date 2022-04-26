@@ -1,10 +1,9 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.3'
+ruby '3.0.3'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
-
+gem 'draft_generators', github: 'firstdraft/draft_generators', branch: 'winter-2020'
 gem 'active_link_to'
 gem "strip_attributes"
 gem "validate_url"
@@ -13,6 +12,7 @@ gem 'faker'
 gem 'pundit'
 gem 'rack-canonical-host'
 
+# Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
@@ -23,7 +23,7 @@ gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 5.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-# gem 'turbolinks', '~> 5'
+gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
@@ -72,14 +72,13 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'bullet'
-  gem 'draft_generators', github: 'firstdraft/draft_generators', branch: 'winter-2020'
   gem 'pry-rails'
   gem 'rails_db'
   gem 'rails-erd'
   gem 'rollbar'
-  gem 'rubocop'
-  gem 'rubocop-performance'
-  gem 'rubocop-rails'
+  gem "standard", require: false
+  gem "rubocop-rails", require: false
+  gem "rubocop-rspec", require: false
   gem 'skylight'
-  gem 'web_git', github: 'firstdraft/web_git', branch: 'spring2020'
+  gem 'web_git', github: 'firstdraft/web_git'
 end
