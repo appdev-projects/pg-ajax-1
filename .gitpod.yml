@@ -1,4 +1,4 @@
-image: jelaniwoods/appdev2022-pg-ajax
+image: jelaniwoods/appdev2022-pg-ajax-wip
 
 tasks:
   - before: |
