@@ -31,8 +31,8 @@
         <% like = current_user.likes.find_by(photo: photo) %>
 
         <% if like %>
-          <%= link_to like, class: "btn btn-link", method: :delete do %>
-            <i class="fas fa-heart fa-fw"></i>
+          <%= link_to like, method: :delete, class: "btn btn-link", remote: true do %>
+            <i id="<%= dom_id(like) %>" class="fas fa-heart fa-fw"></i>
 
             Un-like
           <% end %>
