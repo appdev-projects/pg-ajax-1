@@ -1,0 +1,7 @@
+console.log("Let's get updating!")
+
+var form_id = "#<%= dom_id(@comment.photo) +"_"+ dom_id(@comment) %>_form"
+var updated_comment = $("<%= escape_javascript(render('comments/comment', comment: @comment)) %>");
+
+$(form_id).hide(0);
+$(form_id).before(updated_comment);
