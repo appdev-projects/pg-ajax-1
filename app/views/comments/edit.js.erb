@@ -1,0 +1,2 @@
+$("#<%= dom_id(@comment) %>").hide(0);
+$("#<%= dom_id(@comment) %>").before("<%= escape_javascript(render('comments/form', comment: @comment)) %>");
