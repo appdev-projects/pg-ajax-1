@@ -1,5 +1,5 @@
-<li class="list-group-item">
-  <%= form_with(model: comment) do |form| %>
+<li id="<%= dom_id(comment.photo) %>_comment_form" class="list-group-item">
+  <%= form_with(model: comment, local: false) do |form| %>
     <% if comment.errors.any? %>
       <div id="error_explanation">
         <ul class="list-unstyled">
