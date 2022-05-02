@@ -1,0 +1,4 @@
+$("#<%= dom_id(@comment.photo) %>_comment_form").before("<%= escape_javascript(render 'comments/comment', comment: @comment) %>")
+
+
+$("#<%= dom_id(@comment.photo) %>_comment_form #comment_body").val("")
