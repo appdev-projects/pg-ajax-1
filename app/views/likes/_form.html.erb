@@ -1,4 +1,4 @@
-<%= form_with(model: like, class: "d-inline-block") do |form| %>
+<%= form_with(model: like, class: "d-inline-block", local: false) do |form| %>
   <%= form.hidden_field :fan_id %>
 
   <%= form.hidden_field :photo_id %>
