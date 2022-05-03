@@ -1,0 +1,5 @@
+$("#<%= dom_id(@comment) %>").fadeOut(500, function() {
+  $(this).remove();
+});
+
+console.log("Comment destroyed.");
