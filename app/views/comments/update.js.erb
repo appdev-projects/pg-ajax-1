@@ -1,0 +1,2 @@
+console.log("Howdy Partner");
+$("#<%= dom_id(@comment.photo) %>_<%= dom_id(@comment) %>_form").replaceWith("<%= j(render @comment) %>");
