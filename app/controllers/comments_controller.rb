@@ -33,10 +33,15 @@ class CommentsController < ApplicationController
       if @comment.save
         format.html { redirect_back fallback_location: root_path, notice: "Comment was successfully created." }
         format.json { render :show, status: :created, location: @comment }
+        format.js
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
+        format.js
       end
+
+      
+
     end
   end
 
@@ -63,7 +68,7 @@ class CommentsController < ApplicationController
       format.js do
         render template: "comments/destroy.js.erb"
       end
-      
+
     end
   end
 
