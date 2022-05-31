@@ -13,7 +13,7 @@
         <% end %>
 
       
-        <%= link_to photo, method: :delete, class: "btn btn-link btn-sm text-muted" do %>
+        <%= link_to photo, method: :delete, class: "btn btn-link btn-sm text-muted", remote: true do %>
           <i class="fas fa-trash fa-fw"></i>
         <% end %>
       <% end %>
