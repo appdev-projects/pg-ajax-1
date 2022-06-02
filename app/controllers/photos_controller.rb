@@ -1,81 +1,58 @@
 class PhotosController < ApplicationController
-  before_action :set_photo, only: %i[ show edit update destroy ]
-  
-  before_action :ensure_current_user_is_owner, only: [:destroy, :update, :edit]
-
-  # GET /photos or /photos.json
   def index
-    @photos = Photo.all
+    matching_photos = Photo.all
+
+    @list_of_photos = matching_photos.order({ :created_at => :desc })
+
+    render({ :template => "photos/index.html.erb" })
   end
 
-  # GET /photos/1 or /photos/1.json
   def show
+    the_id = params.fetch("path_id")
+
+    matching_photos = Photo.where({ :id => the_id })
+
+    @the_photo = matching_photos.at(0)
+
+    render({ :template => "photos/show.html.erb" })
   end
 
-  # GET /photos/new
-  def new
-    @photo = Photo.new
-  end
-
-  # GET /photos/1/edit
-  def edit
-  end
-
-  # POST /photos or /photos.json
   def create
-    @photo = Photo.new(photo_params)
-    @photo.owner = current_user
+    the_photo = Photo.new
+    the_photo.image = params.fetch("query_image")
+    the_photo.caption = params.fetch("query_caption")
+    the_photo.owner_id = params.fetch("query_owner_id")
 
-    respond_to do |format|
-      if @photo.save
-        format.html { redirect_to @photo, notice: "Photo was successfully created." }
-        format.json { render :show, status: :created, location: @photo }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @photo.errors, status: :unprocessable_entity }
-      end
+    if the_photo.valid?
+      the_photo.save
+      redirect_to("/photos", { :notice => "Photo created successfully." })
+    else
+      redirect_to("/photos", { :alert => the_photo.errors.full_messages.to_sentence })
     end
   end
 
-  # PATCH/PUT /photos/1 or /photos/1.json
   def update
-    respond_to do |format|
-      if @photo.update(photo_params)
-        format.html { redirect_to @photo, notice: "Photo was successfully updated." }
-        format.json { render :show, status: :ok, location: @photo }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @photo.errors, status: :unprocessable_entity }
-      end
+    the_id = params.fetch("path_id")
+    the_photo = Photo.where({ :id => the_id }).at(0)
+
+    the_photo.image = params.fetch("query_image")
+    the_photo.caption = params.fetch("query_caption")
+    the_photo.owner_id = params.fetch("query_owner_id")
+
+    if the_photo.valid?
+      the_photo.save
+      redirect_to("/photos/#{the_photo.id}", { :notice => "Photo updated successfully."} )
+    else
+      redirect_to("/photos/#{the_photo.id}", { :alert => the_photo.errors.full_messages.to_sentence })
     end
   end
-
-  # DELETE /photos/1 or /photos/1.json
-  
 
   def destroy
-    @photo.destroy
+    the_id = params.fetch("path_id")
+    the_photo = Photo.where({ :id => the_id }).at(0)
 
-    respond_to do |format|
-      format.html { redirect_back fallback_location: root_url, notice: "Photo was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    the_photo.destroy
+
+    redirect_to("/photos", { :notice => "Photo deleted successfully."} )
   end
-
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_photo
-      @photo = Photo.find(params[:id])
-    end
-
-    def ensure_current_user_is_owner
-      if current_user != @photo.owner
-        redirect_back fallback_location: root_url, alert: "You're not authorized for that."
-      end
-    end
-
-    # Only allow a list of trusted parameters through.
-    def photo_params
-      params.require(:photo).permit(:image, :comments_count, :likes_count, :caption, :owner_id)
-    end
 end
