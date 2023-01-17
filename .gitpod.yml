@@ -1,8 +1,10 @@
-image: jelaniwoods/appdev2022-pg-ajax-wip
+image: jelaniwoods/appdev2023-pg-ajax-wip
 
 tasks:
   - before: |
+      source $(rvm 3.0.3 do rvm env --path)
       bin/setup
+      .vscode/manage_extensions
 ports:
   - port: 3000
     onOpen: open-preview
@@ -14,5 +16,4 @@ ports:
 vscode:
   extensions:
     - vortizhe.simple-ruby-erb
-    - mbessey.vscode-rufo
     - aliariff.vscode-erb-beautify

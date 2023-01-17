@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.3'
 
-gem 'draft_generators', github: 'firstdraft/draft_generators', branch: 'winter-2020'
+gem 'draft_generators', github: 'firstdraft/draft_generators'
 gem 'active_link_to'
 gem "strip_attributes"
 gem "validate_url"
