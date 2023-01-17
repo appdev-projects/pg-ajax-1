@@ -11,17 +11,17 @@ unwanted_extensions = [
 wanted_extensions = [
   "vscode-rufo-0.0.6.vsix"
 ]
-
+puts "starting..."
 unwanted_extensions.each do |extension|
   results = `code --uninstall-extension #{extension}`
   if results.include?("successfully uninstalled")
     status = "successful"
   elsif results.include?("is not installed")
-    status = "(wasn't installed)"
+    status = "successsful"
   else
     status = "failed"
   end
-  puts "Uninstalled #{extension} - #{status}"
+  puts "Uninstalled #{extension} - #{status}!"
 end
 
 wanted_extensions.each do |extension|
