@@ -15,6 +15,9 @@
   "workbench.fontAliasing": "auto",
   "workbench.startupEditor": "none",
   "workbench.tree.renderIndentGuides": "always",
+  "files.associations": {
+    "*.html.erb": "erb"
+  },
   "files.autoSaveDelay": 500,
   "files.exclude": {
 		"**/.git": true,
@@ -32,16 +35,20 @@
   "html.format.templating": true,
   "terminal.integrated.altClickMovesCursor": true,
   "[erb]":  {
+    "editor.defaultFormatter": "aliariff.vscode-erb-beautify",
 		"editor.formatOnSave": true
   },
   "[ruby]":  {
+    "editor.defaultFormatter": "firstdraft.vscode-rufo",
 		"editor.formatOnSave": true
   },
   "vscode-erb-beautify.keepBlankLines": 1,
+  "vscode-erb-beautify.executePath": "/home/gitpod/.rvm/gems/ruby-3.0.3/wrappers/htmlbeautifier",
+  "rufo.exe": "/home/gitpod/.rvm/gems/ruby-3.0.3/wrappers/rufo",
   "ruby.intellisense": false,
   "gitpod.openInStable.neverPrompt": true,
+  "redhat.telemetry.enabled": false,
   "emmet.includeLanguages": {
     "erb": "html"
   },
-  "redhat.telemetry.enabled": false
 }
