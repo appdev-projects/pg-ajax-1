@@ -96,7 +96,7 @@ task sample_data: :environment do
   bob = User.find_by(username: "bob")
   bob.update(private: true)
   follow_request = FollowRequest.find_by(sender: alice, recipient: bob)
-  # follow_request.destroy
+  follow_request.destroy
   photo = bob.own_photos.first
   photo.fans << alice.leaders.first
 
