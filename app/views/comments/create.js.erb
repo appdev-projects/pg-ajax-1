@@ -1,0 +1,4 @@
+$("#photo_<%= @comment.photo.id %>_new_comment_form").before("<%= escape_javascript(render 'comments/comment', comment: @comment) %>").slideDown(500000,function() {
+  //animation complete
+});
+$("#<%= dom_id(@comment.photo) %>_new_comment_form #comment_body").val("");

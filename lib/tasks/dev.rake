@@ -64,7 +64,7 @@ task sample_data: :environment do
       end
     end
   end
-
+ 
   users.each do |user|
     rand(15).times do
       photo = user.own_photos.create(
