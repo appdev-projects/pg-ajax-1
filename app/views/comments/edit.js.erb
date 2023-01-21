@@ -1,3 +1,3 @@
-var edit_comment = $("<%= j(render 'comments/form', comment: @comment) %>");
+var edit_comment = $("<%= j(render 'comments/form', comment: @comment, context_id: dom_id(@comment)) %>");
 $("#<%= dom_id(@comment) %>").after(edit_comment);
 $("#<%= dom_id(@comment) %>").remove();
