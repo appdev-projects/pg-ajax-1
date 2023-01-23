@@ -1,4 +1,5 @@
-<%= form_with(model: follow_request, class: "d-inline-block") do |form| %>
+<#li id="sender_<%=current_user.id%>_recipient_<%=recipient_id%>_new_follow_unfollow">
+<%= form_with(model: follow_request, local:false, class: "d-inline-block") do |form| %>
   <% if follow_request.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(follow_request.errors.count, "error") %> prohibited this follow_request from being saved:</h2>
@@ -17,3 +18,4 @@
     <%= form.submit "Follow", class: "btn btn-outline-secondary btn-block" %>
   </div>
 <% end %>
+</li>
