@@ -1,0 +1,5 @@
+var change_like = "<%= j(render 'photos/likes', photo: @like.photo) %>";
+$("#<%= dom_id(@like.photo) %>_likes").replaceWith(change_like);
+
+var change_likes_count = "<%= j(render 'users/likes_count', user: current_user) %>";
+$("#<%= dom_id(current_user) %>_likes_count").replaceWith(change_likes_count);
