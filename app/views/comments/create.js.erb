@@ -1,0 +1,2 @@
+var added_comment = $("<%= escape_javascript(render 'comments/comment', comment: @comment) %>");
+$("#<%= dom_id(@comment.photo) %>_new_comment_form").before(added_comment);
