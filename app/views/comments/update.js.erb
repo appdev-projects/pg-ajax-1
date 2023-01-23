@@ -1,0 +1,2 @@
+var updated_comment = $("<%= j(render 'comments/comment', comment: @comment) %>");
+$("#<%= dom_id(@comment) %>_form").after(updated_comment).remove();
