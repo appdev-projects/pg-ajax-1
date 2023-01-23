@@ -31,11 +31,11 @@ task sample_data: :environment do
       bio: Faker::Lorem.paragraph(
         sentence_count: 2,
         supplemental: true,
-        random_sentences_to_add: 4
+        random_sentences_to_add: 4,
       ),
       website: Faker::Internet.url,
       private: [true, false].sample,
-      avatar_image: "https://robohash.org/#{username}"
+      avatar_image: "https://robohash.org/#{username}",
     )
 
     p user.errors.full_messages
@@ -48,7 +48,7 @@ task sample_data: :environment do
       if rand < 0.75
         first_user_follow_request = first_user.sent_follow_requests.create(
           recipient: second_user,
-          status: FollowRequest.statuses.values.sample
+          status: FollowRequest.statuses.values.sample,
         )
 
         p first_user_follow_request.errors.full_messages
@@ -57,7 +57,7 @@ task sample_data: :environment do
       if rand < 0.75
         second_user_follow_request = second_user.sent_follow_requests.create(
           recipient: first_user,
-          status: FollowRequest.statuses.values.sample
+          status: FollowRequest.statuses.values.sample,
         )
 
         p second_user_follow_request.errors.full_messages
@@ -69,7 +69,7 @@ task sample_data: :environment do
     rand(15).times do
       photo = user.own_photos.create(
         caption: Faker::Quote.jack_handey,
-        image: "/#{rand(1..10)}.jpeg"
+        image: "/#{rand(1..10)}.jpeg",
       )
 
       p photo.errors.full_messages
@@ -82,7 +82,7 @@ task sample_data: :environment do
         if rand < 0.25
           comment = photo.comments.create(
             body: Faker::Quote.jack_handey,
-            author: follower
+            author: follower,
           )
 
           p comment.errors.full_messages
