@@ -1,7 +1,7 @@
 <% follow_request = current_user.sent_follow_requests.find_by(recipient: recipient) %>
-<li id="sender_<%=current_user.id%>_recipient_<%=recipient.id%>_follow_unfollow">
+<div id="sender_<%=current_user.id%>_recipient_<%=recipient.id%>_follow_unfollow">
 <% if follow_request %>
-  <li id="<%=dom_id(follow_request)%>"">
+  <div id="<%=dom_id(follow_request)%>"">
   <%= link_to follow_request, method: :delete, class: "btn btn-outline-secondary", remote: true do %>
     <% if follow_request.pending? %>
       Un-request
@@ -9,7 +9,8 @@
       Un-follow
     <% end %>
   <% end %>
+  </div>
 <% else %>
   <%= render "follow_requests/form", follow_request: recipient.received_follow_requests.build %>
 <% end %>
-</li>
+</div>
