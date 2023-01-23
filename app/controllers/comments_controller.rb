@@ -21,6 +21,7 @@ class CommentsController < ApplicationController
   def edit
     respond_to do |format|
       format.html
+      format.js
     end
   end
 
@@ -50,6 +51,7 @@ class CommentsController < ApplicationController
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end

@@ -30,6 +30,7 @@ class LikesController < ApplicationController
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @like.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -53,6 +54,7 @@ class LikesController < ApplicationController
     respond_to do |format|
       format.html { redirect_back fallback_location: root_url, notice: "Like was successfully destroyed." }
       format.json { head :no_content }
+      format.js
     end
   end
 
