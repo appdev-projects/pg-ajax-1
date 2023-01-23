@@ -38,7 +38,7 @@ class CommentsController < ApplicationController
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
-        format.js
+        format.js { render js: @comment.errors, status: :unprocessable_entity }
       end
     end
   end
