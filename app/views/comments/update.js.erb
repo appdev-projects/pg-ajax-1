@@ -1,0 +1,2 @@
+var updated_comment = $("<%= j(render 'comments/comment', comment: @comment) %>");
+$("#<%= dom_id(@comment.photo) %>_new_comment_form").replaceWith(updated_comment);
