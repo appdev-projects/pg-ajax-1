@@ -26,7 +26,9 @@
   <div class="card-body">
     <div id="<%=dom_id(photo)%>_likes" class="mb-3 d-flex justify-content-between">
       <div class="d-flex align-items-baseline">
-        <%= pluralize(photo.likes_count, "like") %>
+        <p id="<%=dom_id(photo)%>_likes_count"> 
+          <%= pluralize(photo.likes_count, "like") %>
+        </p>
 
         <% like = current_user.likes.find_by(photo: photo) %>
 

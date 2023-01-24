@@ -1,2 +1,4 @@
-$("#<%= dom_id(@like) %>").remove();
+var phoid = <%= j(@like.photo.id) %>;
+$("#<%= dom_id(@like) %>").replaceWith("<%= j(render "likes/form", like: @like) %>");
 
+$("#photo_<%=phoid%>_likes_count").replaceWith("<%= j("hola") %>");
