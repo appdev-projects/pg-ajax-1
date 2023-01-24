@@ -1,5 +1,3 @@
-var added_comment = $("<%= j(render @comment) %>");
+var new_follow_request = $("<%= j(render "follow_requests/form") %>");
 
-$("#<%= dom_id(@comment.photo) %>_new_comment_form").before(added_comment);
-
-$("#<%= dom_id(@comment.photo) %>_new_comment_form #comment_body").val("");
+$("#<%= dom_id(@follow_request) %>);
