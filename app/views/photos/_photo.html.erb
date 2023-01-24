@@ -13,7 +13,7 @@
         <% end %>
 
       
-        <%= link_to photo, method: :delete, class: "btn btn-link btn-sm text-muted" do %>
+        <%= link_to photo, method: :delete, class: "btn btn-link btn-sm text-muted", remote: true do %>
           <i class="fas fa-trash fa-fw"></i>
         <% end %>
       <% end %>
@@ -23,10 +23,12 @@
 
   <%= image_tag photo.image, class: "img-fluid" %>
   
-  <div class="card-body">
-    <div class="mb-3 d-flex justify-content-between">
-      <div class="d-flex align-items-baseline">
-        <%= pluralize(photo.likes_count, "like") %>
+  
+<div class="card-body">
+  <div class="mb-3 d-flex justify-content-between">
+    <div class="d-flex align-items-baseline">
+      <%= pluralize(photo.likes_count, "like") %>
+
 
         <% like = current_user.likes.find_by(photo: photo) %>
 
