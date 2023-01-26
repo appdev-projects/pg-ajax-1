@@ -1,0 +1,2 @@
+$("#<%=dom_id(@like.photo)%>_likes_count").replaceWith("<%= j(pluralize(@like.photo.likes_count, "like")) %>");
+$("#<%= dom_id(@like) %>").replaceWith("<%= j(render "likes/form", like: @like) %>");

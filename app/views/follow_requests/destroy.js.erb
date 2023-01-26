@@ -1,0 +1,1 @@
+$("#<%= dom_id(@follow_request) %>").replaceWith("<%= j(render "follow_requests/follow_unfollow", recipient: @follow_request.recipient )%>");
