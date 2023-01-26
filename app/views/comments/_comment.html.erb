@@ -1,4 +1,4 @@
-<li class="list-group-item">
+<li id="<%= dom_id(comment) %>" class="list-group-item">
   <div class="media">
     <%= image_tag comment.author.avatar_image, class: "rounded-circle mr-2", width: 36 %>
     <div class="media-body">
@@ -9,11 +9,11 @@
 
         <div>
           <% if current_user == comment.author %>
-            <%= link_to edit_comment_path(comment), class: "btn btn-link btn-sm text-muted" do %>
+            <%= link_to edit_comment_path(comment), class: "btn btn-link btn-sm text-muted", remote: true do %>
               <i class="fas fa-edit fa-fw"></i>
             <% end %>
 
-            <%= link_to comment, method: :delete, class: "btn btn-link btn-sm text-muted" do %>
+            <%= link_to comment, method: :delete, class: "btn btn-link btn-sm text-muted", remote: true do %>
               <i class="fas fa-trash fa-fw"></i>
             <% end %>
           <% end %>
