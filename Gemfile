@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.3'
 
+gem "grade_runner", github: "firstdraft/grade_runner"
+
 gem 'draft_generators', github: 'firstdraft/draft_generators'
 gem 'active_link_to'
 gem "strip_attributes"
