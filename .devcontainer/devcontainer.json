@@ -19,7 +19,7 @@
   },
 
   // Use 'postCreateCommand' to run commands after the container is created.
-  "postCreateCommand": "source $(rvm 3.0.3 do rvm env --path) && bin/setup && .vscode/manage_extensions",
+  "postCreateCommand": "bin/setup",
 
   // Configure tool-specific properties.
   "customizations": {
