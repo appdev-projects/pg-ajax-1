@@ -3,7 +3,7 @@
 {
   "name": "Container",
   // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-  "image": "bpurinton/pg-ajax-1-codespace-march2023",
+  "image": "bpurinton/pg-ajax-1-codespace-march2023-specs",
 
   // Features to add to the dev container. More info: https://containers.dev/features.
   // "features": {},
