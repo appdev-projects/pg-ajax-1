@@ -42,6 +42,7 @@
     "editor.defaultFormatter": "firstdraft.vscode-rufo",
 		"editor.formatOnSave": true
   },
+  "terminal.integrated.defaultProfile.linux": "bash",
   "vscode-erb-beautify.keepBlankLines": 1,
   "vscode-erb-beautify.executePath": "/home/gitpod/.rvm/gems/ruby-3.0.3/wrappers/htmlbeautifier",
   "rufo.exe": "/home/gitpod/.rvm/gems/ruby-3.0.3/wrappers/rufo",
