@@ -6,7 +6,7 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   config.hosts.clear
   # Allow Gitpod all IPs to render BetterErrors page
-  config.web_console.whitelisted_ips = '0.0.0.0/0.0.0.0'
+  config.web_console.allowed_ips = '0.0.0.0/0.0.0.0'
   BetterErrors::Middleware.allow_ip! '0.0.0.0/0.0.0.0'
   # In the development environment your application's code is reloaded any time
   # it changes. This slows down response time but is perfect for development
