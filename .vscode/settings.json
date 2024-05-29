@@ -2,54 +2,56 @@
   "editor.tabSize": 2,
   "editor.acceptSuggestionOnEnter": "off",
   "editor.bracketPairColorization.enabled": false,
-  "editor.cursorSurroundingLines": 8,
+  "editor.cursorSurroundingLines": 4,
   "editor.dragAndDrop": false,
   "editor.guides.bracketPairs": true,
   "editor.linkedEditing": true,
   "editor.minimap.enabled": false,
   "editor.smoothScrolling": false,
-  "editor.wordBasedSuggestionsMode": "allDocuments",
   "editor.wordWrap": "on",
   "editor.wrappingIndent": "deepIndent",
   "workbench.editor.closeOnFileDelete": true,
   "workbench.fontAliasing": "auto",
   "workbench.startupEditor": "none",
   "workbench.tree.renderIndentGuides": "always",
-  "files.associations": {
-    "*.html.erb": "erb"
-  },
   "files.autoSaveDelay": 500,
   "files.exclude": {
-		"**/.git": true,
-		".vscode": true,
-		".bundle": true,
+    "**/.git": true,
+    ".vscode": true,
+    ".bundle": true,
   },
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
-  "screencastMode.onlyKeyboardShortcuts": true,
+  "screencastMode.keyboardOptions": {
+    "showKeys": false,
+    "showKeybindings": true,
+    "showCommands": false,
+    "showCommandGroups": false,
+    "showSingleEditorCursorMoves": true
+  },
   "screencastMode.verticalOffset": 10,
   "explorer.compactFolders": false,
   "explorer.incrementalNaming": "smart",
-  "html.format.endWithNewline": true,
   "html.format.preserveNewLines": true,
   "html.format.templating": true,
   "terminal.integrated.altClickMovesCursor": true,
-  "[erb]":  {
-    "editor.defaultFormatter": "aliariff.vscode-erb-beautify",
-		"editor.formatOnSave": true
-  },
-  "[ruby]":  {
-    "editor.defaultFormatter": "firstdraft.vscode-rufo",
-		"editor.formatOnSave": true
-  },
   "terminal.integrated.defaultProfile.linux": "bash",
   "vscode-erb-beautify.keepBlankLines": 1,
-  "vscode-erb-beautify.executePath": "/home/gitpod/.rvm/gems/ruby-3.0.3/wrappers/htmlbeautifier",
-  "rufo.exe": "/home/gitpod/.rvm/gems/ruby-3.0.3/wrappers/rufo",
-  "ruby.intellisense": false,
   "gitpod.openInStable.neverPrompt": true,
-  "redhat.telemetry.enabled": false,
+  "gitlens.showWelcomeOnInstall": false,
+  "gitlens.currentLine.enabled": false,
   "emmet.includeLanguages": {
     "erb": "html"
   },
+  "[ruby]": {
+    "editor.defaultFormatter": "mbessey.vscode-rufo",
+    "editor.formatOnSave": false
+  },
+  "[erb]": {
+    "editor.defaultFormatter": "aliariff.vscode-erb-beautify",
+    "editor.formatOnSave": false
+  },
+  "files.associations": {
+    "*.html.erb": "erb"
+  }
 }
