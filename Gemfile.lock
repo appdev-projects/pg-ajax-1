@@ -10,7 +10,7 @@ GIT
   remote: https://github.com/firstdraft/grade_runner.git
   revision: beae22e05f5d65349b61891b4f85da73d8829f23
   specs:
-    grade_runner (0.0.9)
+    grade_runner (0.0.10)
       activesupport (>= 2.3.5)
       faraday-retry (~> 1.0.3)
       octokit (~> 5.0)
