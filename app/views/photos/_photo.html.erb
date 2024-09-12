@@ -13,7 +13,7 @@
         <% end %>
 
       
-        <%= link_to photo, method: :delete, class: "btn btn-link btn-sm text-muted" do %>
+        <%= link_to photo, method: :delete, class: "btn btn-link btn-sm text-muted", remote: true do %>
           <i class="fas fa-trash fa-fw"></i>
         <% end %>
       <% end %>
@@ -31,7 +31,7 @@
         <% like = current_user.likes.find_by(photo: photo) %>
 
         <% if like %>
-          <%= link_to like, class: "btn btn-link", method: :delete do %>
+          <%= link_to like, class: "btn btn-link", method: :delete, remote: true do %>
             <i class="fas fa-heart fa-fw"></i>
 
             Un-like
