@@ -1,0 +1,3 @@
+console.log("Editor opened for '<%= @comment.body %>'.")
+
+$("#<%= dom_id(@comment) %>").replaceWith("<%= j(render "comments/form", comment: @comment) %>");
