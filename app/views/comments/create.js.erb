@@ -1,0 +1,5 @@
+var added_comment = $("<%= j(render @comment) %>");
+
+$("#<%= dom_id(@comment.photo) %>_new_comment_form").before(added_comment);
+
+$("#<%= dom_id(@comment.photo) %>_new_comment_form #comment_body").val("");
