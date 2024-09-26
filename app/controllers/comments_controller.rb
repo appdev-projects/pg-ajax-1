@@ -1,6 +1,5 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[ show edit update destroy ]
-
   before_action :ensure_current_user_is_owner, only: [:destroy, :update, :edit]
 
   # GET /comments or /comments.json
@@ -21,6 +20,7 @@ class CommentsController < ApplicationController
   def edit
     respond_to do |format|
       format.html
+      format.js
     end
   end
 
@@ -33,9 +33,13 @@ class CommentsController < ApplicationController
       if @comment.save
         format.html { redirect_back fallback_location: root_path, notice: "Comment was successfully created." }
         format.json { render :show, status: :created, location: @comment }
+        format.js do
+          render template: "comments/create.js.erb"
+        end
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
+        format.js { render js: @comment.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -46,9 +50,13 @@ class CommentsController < ApplicationController
       if @comment.update(comment_params)
         format.html { redirect_to root_url, notice: "Comment was successfully updated." }
         format.json { render :show, status: :ok, location: @comment }
+        format.js do
+          render template: "comments/update.js.erb"
+        end
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
+        format.js { render js: @comment.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -59,23 +67,27 @@ class CommentsController < ApplicationController
     respond_to do |format|
       format.html { redirect_back fallback_location: root_url, notice: "Comment was successfully destroyed." }
       format.json { head :no_content }
+      format.js do
+        render template: "comments/destroy.js.erb"
+      end
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_comment
-      @comment = Comment.find(params[:id])
-    end
 
-    def ensure_current_user_is_owner
-      if current_user != @comment.author
-        redirect_back fallback_location: root_url, alert: "You're not authorized for that."
-      end
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_comment
+    @comment = Comment.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def comment_params
-      params.require(:comment).permit(:author_id, :photo_id, :body)
+  def ensure_current_user_is_owner
+    if current_user != @comment.author
+      redirect_back fallback_location: root_url, alert: "You're not authorized for that."
     end
+  end
+
+  # Only allow a list of trusted parameters through.
+  def comment_params
+    params.require(:comment).permit(:author_id, :photo_id, :body)
+  end
 end
